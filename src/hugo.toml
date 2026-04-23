@@ -36,7 +36,7 @@ buildExpired = false
   tocopen = false
 
   # Blog feature toggle – set to false to disable the blog entirely
-  enableBlog = false
+  enableBlog = true
 
   [[params.socialIcons]]
     name = "github"
