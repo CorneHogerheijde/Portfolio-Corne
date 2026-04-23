@@ -1,0 +1,102 @@
+baseURL = "https://hogerheijde.nl"
+languageCode = "en-us"
+title = "Corné Hogerheijde"
+theme = "PaperMod"
+paginate = 5
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+  env = "production"
+  title = "Corné Hogerheijde"
+  description = "Software Engineer & Solution Architect – Azure, .NET, IaC"
+  keywords = ["Software Engineer", "Solution Architect", "Azure", ".NET", "Bicep", "IaC"]
+  author = "Corné Hogerheijde"
+  images = ["/img/profile.jpg"]
+  DateFormat = "January 2006"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+
+  # Blog feature toggle – set to false to disable the blog entirely
+  enableBlog = true
+
+  [params.homeInfoParams]
+    Title = "Hi, I'm Corné 👋"
+    Content = """
+I'm a **Software Engineer & Solution Architect** based in Hillegom, Netherlands.
+
+Reliable, proactive, and analytical — I draw energy from adding value within organisations.
+I build elegant, effective technical solutions for real business challenges.
+
+Currently working as an independent entrepreneur affiliated with **The Future Group**, delivering hands-on engineering and architecture across cloud-native, DevOps, and .NET projects.
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/CorneHogerheijde"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/cornehogerheijde"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:corne@hogerheijde.nl"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "experience"
+    name = "Experience"
+    url = "/experience/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "skills"
+    name = "Skills"
+    url = "/skills/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 40
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 50
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,20 @@
+# Hugo build output
+src/public/
+src/resources/_gen/
+src/.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+*.swp
+*.swo
+
+# Azure
+.azure/
+
+# Secrets
+*.env
+.env.*
