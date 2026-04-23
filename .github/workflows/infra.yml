@@ -43,55 +43,12 @@ jobs:
 
       - name: Deploy Bicep With Deployment Stack
         run: |
-          # Wait until an existing stack is in a terminal state before updating.
-          for i in {1..30}; do
-            state=$(az stack group show \
-              --name "$STACK_NAME" \
-              --resource-group "$RESOURCE_GROUP" \
-              --query "provisioningState" \
-              -o tsv 2>/dev/null || echo "NotFound")
-
-            if [ "$state" = "NotFound" ] || [ "$state" = "succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
-              echo "Stack state is terminal: $state"
-              break
-            fi
-
-            echo "Stack is in non-terminal state: $state (attempt $i/30), waiting 20s..."
-            sleep 20
-          done
-
-          # Retry create/update when Azure reports transient non-terminal-state conflicts.
-          for attempt in {1..5}; do
-            set +e
-            output=$(az stack group create \
-              --name "$STACK_NAME" \
-              --resource-group "$RESOURCE_GROUP" \
-              --template-file infra/main.bicep \
-              --parameters infra/main.bicepparam \
-              --parameters repositoryToken=${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} \
-              --action-on-unmanage deleteResources \
-              --deny-settings-mode none \
-              --yes 2>&1)
-            code=$?
-            set -e
-
-            echo "$output"
-
-            if [ $code -eq 0 ]; then
-              echo "Deployment stack updated successfully."
-              break
-            fi
-
-            if echo "$output" | grep -q "DeploymentStackInNonTerminalState"; then
-              echo "Stack still non-terminal, retrying in 20s (attempt $attempt/5)..."
-              sleep 20
-              continue
-            fi
-
-            exit $code
-          done
-
-          if [ $code -ne 0 ]; then
-            echo "Deployment stack update failed after retries."
-            exit $code
-          fi
+          az stack group create \
+            --name "$STACK_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --template-file infra/main.bicep \
+            --parameters infra/main.bicepparam \
+            --parameters repositoryToken=${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} \
+            --action-on-unmanage deleteResources \
+            --deny-settings-mode none \
+            --yes

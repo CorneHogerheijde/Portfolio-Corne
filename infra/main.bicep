@@ -10,8 +10,10 @@ param location string = 'westeurope'
 @allowed(['Free', 'Standard'])
 param sku string = 'Free'
 
-@description('Custom domain for the portfolio (e.g. hogerheijde.nl).')
-param customDomain string = 'hogerheijde.nl'
+@description('Custom domains for the portfolio.')
+param customDomains array = [
+  'hogerheijde.nl'
+]
 
 @description('Attach custom domain during deployment. Keep false until DNS validation is configured.')
 param enableCustomDomain bool = false
@@ -47,13 +49,13 @@ resource staticWebApp 'Microsoft.Web/staticSites@2024-04-01' = {
 }
 
 // Custom domain configuration - apply when enableCustomDomain is true
-resource customDomainBinding 'Microsoft.Web/staticSites/customDomains@2024-04-01' = if (enableCustomDomain) {
+resource customDomainBindings 'Microsoft.Web/staticSites/customDomains@2024-04-01' = [for domain in customDomains: if (enableCustomDomain) {
   parent: staticWebApp
-  name: customDomain
+  name: domain
   properties: {
     validationMethod: 'dns-txt-token'
   }
-}
+}]
 
 // ---------------------------------------------------------------------------
 // Outputs

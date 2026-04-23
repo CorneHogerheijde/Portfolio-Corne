@@ -3,7 +3,10 @@ using './main.bicep'
 param name = 'swa-portfolio-corne'
 param location = 'westeurope'
 param sku = 'Free'
-param customDomain = 'hogerheijde.nl'
+param customDomains = [
+  'hogerheijde.nl'
+  'corne.hogerheijde.nl'
+]
 param enableCustomDomain = true
 param repositoryUrl = 'https://github.com/CorneHogerheijde/Portfolio-Corne'
 param branch = 'main'
