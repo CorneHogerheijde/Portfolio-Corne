@@ -3,13 +3,13 @@
   <div class="logo">
     {{- $label := .Site.Params.label | default dict }}
     {{- if .Site.Title }}
-    <a href="{{ absURL "" }}" accesskey="h" title="{{ .Site.Title }} (Alt + H)">
+    <a href="{{ "" | relLangURL }}" accesskey="h" title="{{ .Site.Title }} (Alt + H)">
       {{- if $label.iconSVG }}
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' fill='none'>
         {{- $label.iconSVG | safeHTML }}
       </svg>
       {{- else if $label.icon }}
-      <img src="{{ absURL $label.icon }}" alt="" aria-label="logo" height="35">
+      <img src="{{ $label.icon | relURL }}" alt="" aria-label="logo" height="35">
       {{- end }}
       <span>{{ $label.text | default .Site.Title }}</span>
     </a>
@@ -21,7 +21,7 @@
     {{- $blogEnabled := $.Site.Params.enableBlog | default true }}
     {{- if not (and $isBlog (not $blogEnabled)) }}
     <li>
-      <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}
+      <a href="{{ .URL | relLangURL }}" title="{{ .Title | default .Name }}
         {{- if .Params.description }} ({{ .Params.description }}){{ end }}"
         {{- if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>
         <span>{{ .Name }}</span>
@@ -35,6 +35,24 @@
       </a>
     </li>
     {{- end }}
+    {{- end }}
+    {{- if and (hugo.IsMultilingual) (not $.Site.Params.disableLangToggle) }}
+    <li>
+      <span>
+        {{- $lang := .Lang -}}
+        {{- range site.Home.AllTranslations -}}
+        {{- if ne $lang .Lang -}}
+        <a href="{{- .RelPermalink -}}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">
+          {{- if .Language.LanguageName -}}
+          {{- .Language.LanguageName -}}
+          {{- else -}}
+          {{- .Lang | upper -}}
+          {{- end -}}
+        </a>
+        {{- end -}}
+        {{- end -}}
+      </span>
+    </li>
     {{- end }}
     <li>
       <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="auto" aria-live="polite">
