@@ -70,7 +70,7 @@
                         {{- if eq $.Lang .Lang }}
                         <span class="active">{{ .Lang | upper }}</span>
                         {{- else }}
-                        <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">{{ .Lang | upper }}</a>
+                        <a href="{{ .RelPermalink }}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">{{ .Lang | upper }}</a>
                         {{- end }}
                     </li>
                     {{- end }}
