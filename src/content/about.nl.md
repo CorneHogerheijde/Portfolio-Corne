@@ -4,7 +4,7 @@ description: "Over Corné Hogerheijde - Software Engineer & Solution Architect"
 hidemeta: true
 ---
 
-![Corné Hogerheijde](/img/profile.jpg)
+<img src="/img/profile.jpg" alt="Corné Hogerheijde" width="50%" />
 
 ## Professioneel profiel
 
