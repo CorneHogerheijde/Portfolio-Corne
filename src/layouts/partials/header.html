@@ -3,7 +3,7 @@
         <div class="logo">
             {{- $labelText := (site.Params.label.text | default site.Title) }}
             {{- if site.Title }}
-            <span title="{{ $labelText }}">
+            <a href="{{ "" | relLangURL }}" accesskey="h" title="{{ $labelText }} (Alt + H)">
                 {{- if site.Params.label.icon }}
                 {{- $img := resources.Get site.Params.label.icon }}
                 {{- if $img }}
@@ -29,7 +29,7 @@
                     {{ site.Params.label.iconSVG | safeHTML }}
                 {{- end -}}
                 {{- $labelText -}}
-            </span>
+            </a>
             {{- end }}
 
             {{- $showSwitches := (or (not site.Params.disableThemeToggle) (and (not site.Params.disableLangToggle) hugo.IsMultilingual)) }}
