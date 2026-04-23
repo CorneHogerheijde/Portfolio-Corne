@@ -2,11 +2,11 @@
   "routes": [
     {
       "route": "/admin",
-      "rewrite": "/admin/index.html"
+      "statusCode": 404
     },
     {
       "route": "/admin/*",
-      "rewrite": "/admin/index.html"
+      "statusCode": 404
     }
   ],
   "navigationFallback": {
