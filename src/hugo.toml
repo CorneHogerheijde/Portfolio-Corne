@@ -1,5 +1,6 @@
 baseURL = "https://hogerheijde.nl"
-languageCode = "en-us"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 title = "Corné Hogerheijde"
 theme = "PaperMod"
 paginate = 5
@@ -37,17 +38,6 @@ buildExpired = false
   # Blog feature toggle – set to false to disable the blog entirely
   enableBlog = true
 
-  [params.homeInfoParams]
-    Title = "Hi, I'm Corné 👋"
-    Content = """
-I'm a **Software Engineer & Solution Architect** based in Hillegom, Netherlands.
-
-Reliable, proactive, and analytical — I draw energy from adding value within organisations.
-I build elegant, effective technical solutions for real business challenges.
-
-Currently working as an independent entrepreneur affiliated with **The Future Group**, delivering hands-on engineering and architecture across cloud-native, DevOps, and .NET projects.
-"""
-
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/CorneHogerheijde"
@@ -60,36 +50,102 @@ Currently working as an independent entrepreneur affiliated with **The Future Gr
     name = "email"
     url = "mailto:corne@hogerheijde.nl"
 
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 10
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-us"
+    weight = 1
+    title = "Corné Hogerheijde"
+    [languages.en.params]
+      languageAltTitle = "English"
+      [languages.en.params.homeInfoParams]
+        Title = "Hi, I'm Corné 👋"
+        Content = """
+I'm a **Software Engineer & Solution Architect** based in Hillegom, Netherlands.
 
-  [[menu.main]]
-    identifier = "experience"
-    name = "Experience"
-    url = "/experience/"
-    weight = 20
+Reliable, proactive, and analytical - I draw energy from adding value within organisations.
+I build elegant, effective technical solutions for real business challenges.
 
-  [[menu.main]]
-    identifier = "skills"
-    name = "Skills"
-    url = "/skills/"
-    weight = 30
+Currently working as an independent entrepreneur affiliated with **The Future Group**, delivering hands-on engineering and architecture across cloud-native, DevOps, and .NET projects.
+"""
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 10
 
-  [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/posts/"
-    weight = 40
+      [[languages.en.menu.main]]
+        identifier = "experience"
+        name = "Experience"
+        url = "/experience/"
+        weight = 20
 
-  [[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    url = "/contact/"
-    weight = 50
+      [[languages.en.menu.main]]
+        identifier = "skills"
+        name = "Skills"
+        url = "/skills/"
+        weight = 30
+
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/posts/"
+        weight = 40
+
+      [[languages.en.menu.main]]
+        identifier = "contact"
+        name = "Contact"
+        url = "/contact/"
+        weight = 50
+
+  [languages.nl]
+    languageName = "Nederlands"
+    languageCode = "nl-nl"
+    weight = 2
+    title = "Corné Hogerheijde"
+    [languages.nl.params]
+      languageAltTitle = "Nederlands"
+      [languages.nl.params.homeInfoParams]
+        Title = "Hoi, ik ben Corné 👋"
+        Content = """
+Ik ben een **Software Engineer & Solution Architect** uit Hillegom, Nederland.
+
+Betrouwbaar, proactief en analytisch - ik krijg energie van waarde toevoegen binnen organisaties.
+Ik bouw elegante en effectieve technische oplossingen voor echte businessuitdagingen.
+
+Momenteel werk ik als zelfstandig ondernemer aangesloten bij **The Future Group**, met hands-on engineering en architectuur in cloud-native, DevOps en .NET projecten.
+"""
+    [languages.nl.menu]
+      [[languages.nl.menu.main]]
+        identifier = "about"
+        name = "Over mij"
+        url = "/about/"
+        weight = 10
+
+      [[languages.nl.menu.main]]
+        identifier = "experience"
+        name = "Ervaring"
+        url = "/experience/"
+        weight = 20
+
+      [[languages.nl.menu.main]]
+        identifier = "skills"
+        name = "Vaardigheden"
+        url = "/skills/"
+        weight = 30
+
+      [[languages.nl.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/posts/"
+        weight = 40
+
+      [[languages.nl.menu.main]]
+        identifier = "contact"
+        name = "Contact"
+        url = "/contact/"
+        weight = 50
 
 [markup]
   [markup.goldmark]

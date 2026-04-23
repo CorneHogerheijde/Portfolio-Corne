@@ -36,6 +36,24 @@
     </li>
     {{- end }}
     {{- end }}
+    {{- if and (hugo.IsMultilingual) (not $.Site.Params.disableLangToggle) }}
+    <li>
+      <span>
+        {{- $lang := .Lang -}}
+        {{- range site.Home.AllTranslations -}}
+        {{- if ne $lang .Lang -}}
+        <a href="{{- .Permalink -}}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">
+          {{- if .Language.LanguageName -}}
+          {{- .Language.LanguageName -}}
+          {{- else -}}
+          {{- .Lang | upper -}}
+          {{- end -}}
+        </a>
+        {{- end -}}
+        {{- end -}}
+      </span>
+    </li>
+    {{- end }}
     <li>
       <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="auto" aria-live="polite">
         <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none"
