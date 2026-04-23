@@ -53,11 +53,15 @@ az login
 # Create resource group
 az group create --name rg-portfolio-corne --location westeurope
 
-# Deploy infrastructure
-az deployment group create \
+# Deploy infrastructure with deployment stack
+az stack group create \
+  --name stack-portfolio-corne-prod \
   --resource-group rg-portfolio-corne \
   --template-file infra/main.bicep \
-  --parameters infra/main.bicepparam
+  --parameters infra/main.bicepparam \
+  --action-on-unmanage deleteResources \
+  --deny-settings-mode none \
+  --yes
 ```
 
 ## Required GitHub Secrets

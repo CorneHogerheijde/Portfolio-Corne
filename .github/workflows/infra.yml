@@ -20,6 +20,10 @@ jobs:
   deploy_infra:
     runs-on: ubuntu-latest
     name: Deploy Bicep Infrastructure
+    env:
+      RESOURCE_GROUP: rg-portfolio-corne
+      LOCATION: westeurope
+      STACK_NAME: stack-portfolio-corne-prod
 
     steps:
       - uses: actions/checkout@v4
@@ -34,13 +38,17 @@ jobs:
       - name: Create Resource Group
         run: |
           az group create \
-            --name rg-portfolio-corne \
-            --location westeurope
+            --name "$RESOURCE_GROUP" \
+            --location "$LOCATION"
 
-      - name: Deploy Bicep
+      - name: Deploy Bicep With Deployment Stack
         run: |
-          az deployment group create \
-            --resource-group rg-portfolio-corne \
+          az stack group create \
+            --name "$STACK_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
             --template-file infra/main.bicep \
             --parameters infra/main.bicepparam \
-            --parameters repositoryToken=${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+            --parameters repositoryToken=${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} \
+            --action-on-unmanage deleteResources \
+            --deny-settings-mode none \
+            --yes
