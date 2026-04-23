@@ -51,7 +51,7 @@ jobs:
               --query "provisioningState" \
               -o tsv 2>/dev/null || echo "NotFound")
 
-            if [ "$state" = "NotFound" ] || [ "$state" = "Succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
+            if [ "$state" = "NotFound" ] || [ "$state" = "succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
               echo "Stack state is terminal: $state"
               break
             fi
