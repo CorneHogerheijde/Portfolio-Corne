@@ -26,7 +26,7 @@ jobs:
       STACK_NAME: stack-portfolio-corne-prod
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
       - name: Azure Login (OIDC)
         uses: azure/login@v3
@@ -48,10 +48,10 @@ jobs:
             state=$(az stack group show \
               --name "$STACK_NAME" \
               --resource-group "$RESOURCE_GROUP" \
-              --query "provisioningState" \
+              --query "properties.provisioningState" \
               -o tsv 2>/dev/null || echo "NotFound")
 
-            if [ "$state" = "NotFound" ] || [ "$state" = "succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
+            if [ "$state" = "NotFound" ] || [ "$state" = "Succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
               echo "Stack state is terminal: $state"
               break
             fi
