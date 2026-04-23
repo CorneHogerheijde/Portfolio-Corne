@@ -14,7 +14,7 @@ I'm always open to interesting projects, collaborations or a good conversation a
 | 💼 LinkedIn | [linkedin.com/in/cornehogerheijde](https://www.linkedin.com/in/cornehogerheijde) |
 | 🐙 GitHub | [github.com/CorneHogerheijde](https://github.com/CorneHogerheijde) |
 | 📍 Location | Hillegom, Netherlands |
-| 📞 Phone | +31 6 13 56 08 90 |
+| 📞 Phone | +31 6 433 797 03 |
 
 ---
 
