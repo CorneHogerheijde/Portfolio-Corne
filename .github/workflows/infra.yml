@@ -48,7 +48,7 @@ jobs:
             state=$(az stack group show \
               --name "$STACK_NAME" \
               --resource-group "$RESOURCE_GROUP" \
-              --query "properties.provisioningState" \
+              --query "provisioningState" \
               -o tsv 2>/dev/null || echo "NotFound")
 
             if [ "$state" = "NotFound" ] || [ "$state" = "Succeeded" ] || [ "$state" = "Failed" ] || [ "$state" = "Canceled" ]; then
