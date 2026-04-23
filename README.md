@@ -64,6 +64,9 @@ az stack group create \
   --yes
 ```
 
+Note: custom domain attachment is disabled by default via `enableCustomDomain = false` in `infra/main.bicepparam`.
+Set it to `true` only after DNS TXT validation is configured for your domain.
+
 ## Required GitHub Secrets
 
 | Secret | Description |

@@ -13,6 +13,9 @@ param sku string = 'Free'
 @description('Custom domain for the portfolio (e.g. hogerheijde.nl).')
 param customDomain string = 'hogerheijde.nl'
 
+@description('Attach custom domain during deployment. Keep false until DNS validation is configured.')
+param enableCustomDomain bool = false
+
 @description('GitHub repository URL.')
 param repositoryUrl string = 'https://github.com/CorneHogerheijde/Portfolio-Corne'
 
@@ -33,25 +36,28 @@ param tags object = {
 // ---------------------------------------------------------------------------
 // Azure Static Web App – deployed via AVM module
 // ---------------------------------------------------------------------------
+var staticWebAppParams = union({
+  name: name
+  location: location
+  sku: sku
+  repositoryUrl: repositoryUrl
+  branch: branch
+  repositoryToken: repositoryToken
+  buildProperties: {
+    appLocation: 'src'
+    outputLocation: 'public'
+    skipGithubActionWorkflowGeneration: true
+  }
+  tags: tags
+}, enableCustomDomain ? {
+  // Attach the custom domain only when explicitly enabled.
+  customDomains: [customDomain]
+  validationMethod: 'dns-txt-token'
+} : {})
+
 module staticWebApp 'br/public:avm/res/web/static-site:0.9.4' = {
   name: 'staticWebAppDeploy'
-  params: {
-    name: name
-    location: location
-    sku: sku
-    repositoryUrl: repositoryUrl
-    branch: branch
-    repositoryToken: repositoryToken
-    buildProperties: {
-      appLocation: 'src'
-      outputLocation: 'public'
-      skipGithubActionWorkflowGeneration: true
-    }
-    // customDomains is a flat array of domain name strings; validation method is a separate param
-    customDomains: [customDomain]
-    validationMethod: 'dns-txt-token'
-    tags: tags
-  }
+  params: staticWebAppParams
 }
 
 // ---------------------------------------------------------------------------
