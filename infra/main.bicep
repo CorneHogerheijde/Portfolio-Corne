@@ -36,35 +36,58 @@ param tags object = {
 }
 
 // ---------------------------------------------------------------------------
-// Azure Static Web App - Native Microsoft.Web/staticSites resource
+// Azure Static Web App – deployed via AVM module
 // ---------------------------------------------------------------------------
-resource staticWebApp 'Microsoft.Web/staticSites@2024-04-01' = {
-  name: name
-  location: location
-  sku: {
-    name: sku
+module staticWebAppNoDomain 'br/public:avm/res/web/static-site:0.9.4' = if (!enableCustomDomain) {
+  name: 'staticWebAppDeployNoDomain'
+  params: {
+    name: name
+    location: location
+    sku: sku
+    repositoryUrl: repositoryUrl
+    branch: branch
+    repositoryToken: repositoryToken
+    buildProperties: {
+      appLocation: 'src'
+      outputLocation: 'public'
+      skipGithubActionWorkflowGeneration: true
+    }
+    tags: tags
   }
-  tags: tags
-  properties: {}
 }
 
-// Custom domain configuration - apply when enableCustomDomain is true
-resource customDomainBindings 'Microsoft.Web/staticSites/customDomains@2024-04-01' = [for domain in customDomains: if (enableCustomDomain) {
-  parent: staticWebApp
-  name: domain
-  properties: {
+module staticWebAppWithDomain 'br/public:avm/res/web/static-site:0.9.4' = if (enableCustomDomain) {
+  name: 'staticWebAppDeployWithDomain'
+  params: {
+    name: name
+    location: location
+    sku: sku
+    repositoryUrl: repositoryUrl
+    branch: branch
+    repositoryToken: repositoryToken
+    buildProperties: {
+      appLocation: 'src'
+      outputLocation: 'public'
+      skipGithubActionWorkflowGeneration: true
+    }
+    customDomains: customDomains
     validationMethod: 'dns-txt-token'
+    tags: tags
   }
-}]
+}
 
 // ---------------------------------------------------------------------------
 // Outputs
 // ---------------------------------------------------------------------------
 @description('The default hostname of the Static Web App.')
-output defaultHostname string = staticWebApp.properties.defaultHostname
+output defaultHostname string = enableCustomDomain
+  ? staticWebAppWithDomain.outputs.defaultHostname
+  : staticWebAppNoDomain.outputs.defaultHostname
 
 @description('The resource ID of the Static Web App.')
-output resourceId string = staticWebApp.id
+output resourceId string = enableCustomDomain
+  ? staticWebAppWithDomain.outputs.resourceId
+  : staticWebAppNoDomain.outputs.resourceId
 
 @description('Command to fetch the SWA deployment token after the resource is created.')
 output deploymentTokenCommand string = 'az staticwebapp secrets list --name ${name} --resource-group ${resourceGroup().name} --query "properties.apiKey" -o tsv'
