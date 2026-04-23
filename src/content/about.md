@@ -4,7 +4,7 @@ description: "About Corné Hogerheijde – Software Engineer & Solution Architec
 hidemeta: true
 ---
 
-![Corné Hogerheijde](/img/profile.jpg)
+<img src="/img/profile.jpg" alt="Corné Hogerheijde" width="50%" />
 
 ## Professional Profile
 
