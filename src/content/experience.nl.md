@@ -1,10 +1,21 @@
 ---
-title: "Ervaring"
-description: "Werkervaring van Corné Hogerheijde"
+title: Ervaring
+description: Werkervaring van Corné Hogerheijde
 hidemeta: true
 ---
 
 ## Werkervaring
+
+### AI Vibe coding, (Vogel) excursies en Broedvogel Monitoring Project - Hogerheijde.nl @ Hillegom
+**April 2026 - Mei 2026**
+
+*Stack: GitHub Copilot · Claude · GPT · Gemini · Azure · GitHub · Dapr · .NET · Vanilla JS · BMAD · Azure · Entity Framework Core · Hugo + PaperMod · Decap · Bicep
+
+In de periode tussen twee opdrachten heb ik me ingewerkt in AI Vibe coding.
+
+**Resultaten:** Twee repo's en veel inzichten. Daarnaast een portfolio op Hogerheijde.nl
+
+---
 
 ### Software & Platform Engineer - Medux
 **Januari 2022 - April 2026**
