@@ -6,6 +6,24 @@ hidemeta: true
 
 ## Work Experience
 
+### Integration Engineer — Unica
+**June 2026**
+
+Getting started.
+
+---
+
+### AI Vibe coding, Bird Excursions and Breeding Bird Monitoring Project — Hogerheijde.nl @ Hillegom
+**April 2026 – June 2026**
+
+*Stack: GitHub Copilot · Claude · GPT · Gemini · Azure · GitHub · Dapr · .NET · Vanilla JS · BMAD · Azure · Entity Framework Core · Hugo + PaperMod · Decap · Bicep*
+
+In between two assignments, I used this period to deepen my skills in AI Vibe coding.
+
+**Results:** Two repositories and many insights. In addition, I built a portfolio site on Hogerheijde.nl.
+
+---
+
 ### Software & Platform Engineer — Medux
 **January 2022 – April 2026**
 

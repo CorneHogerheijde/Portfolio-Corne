@@ -9,12 +9,12 @@ hidemeta: true
 ### Integration Engineer - Unica
 **Juni 2026**
 
-Starting.
+Aan het starten.
 
 ### AI Vibe coding, (Vogel) excursies en Broedvogel Monitoring Project - Hogerheijde.nl @ Hillegom
 **April 2026 - Juni 2026**
 
-*Stack: GitHub Copilot · Claude · GPT · Gemini · Azure · GitHub · Dapr · .NET · Vanilla JS · BMAD · Azure · Entity Framework Core · Hugo + PaperMod · Decap · Bicep
+*Stack: GitHub Copilot · Claude · GPT · Gemini · Azure · GitHub · Dapr · .NET · Vanilla JS · BMAD · Azure · Entity Framework Core · Hugo + PaperMod · Decap · Bicep*
 
 In de periode tussen twee opdrachten heb ik me ingewerkt in AI Vibe coding.
 
