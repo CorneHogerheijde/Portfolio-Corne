@@ -7,7 +7,7 @@ hidemeta: true
 ## Work Experience
 
 ### Software & Platform Engineer — Medux
-**January 2022 – April 2022**
+**January 2022 – April 2026**
 
 *Stack: Azure · Azure DevOps · MySQL · SQL Server · .NET Core · Bicep · Power Platform · PowerShell · Azure Container Apps · IaC · Key Vault · Azure SQL · Azure App Services · Azure Functions*
 
