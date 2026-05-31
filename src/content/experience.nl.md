@@ -1,13 +1,18 @@
 ---
-title: Ervaring
-description: Werkervaring van Corné Hogerheijde
+title: "Ervaring"
+description: "Werkervaring van Corné Hogerheijde"
 hidemeta: true
 ---
 
 ## Werkervaring
 
+### Integration Engineer - Unica
+**Juni 2026**
+
+Starting.
+
 ### AI Vibe coding, (Vogel) excursies en Broedvogel Monitoring Project - Hogerheijde.nl @ Hillegom
-**April 2026 - Mei 2026**
+**April 2026 - Juni 2026**
 
 *Stack: GitHub Copilot · Claude · GPT · Gemini · Azure · GitHub · Dapr · .NET · Vanilla JS · BMAD · Azure · Entity Framework Core · Hugo + PaperMod · Decap · Bicep
 
